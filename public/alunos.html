@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sistema de Alunos</title>
+  <link rel="stylesheet" href="css/alunos.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Sistema de Alunos</h1>
+
+    <div class="controls">
+      <!-- Botões do módulo de alunos -->
+      <div class="group">
+        <button id="adicionarBtn" class="btn primary">Adicionar</button>
+        <button id="listarBtn" class="btn neutral">Listar</button>
+      </div>
+
+      <!-- Campo de busca -->
+      <div class="search">
+        <input id="pesquisaInput" type="text" placeholder="Buscar por nome ou RM..." />
+        <button id="pesquisarBtn" class="btn primary">Pesquisar</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>RM</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaCorpo"></tbody>
+    </table>
+
+    <hr style="margin:24px 0; border-color:#222;">
+
+    <!-- Acesso ao módulo de RMs -->
+    <div style="text-align:center; margin-top:20px;">
+      <button onclick="window.location.href='rms.html'" class="btn primary">
+         RMs
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="hidden fixed inset-0 bg-overlay items-center justify-center"></div>
+  <nav class="navbar">
+  <div class="nav-left">
+    <h1>Sistema de Alunos</h1>
+  </div>
+  <div class="nav-right">
+    <button onclick="window.location.href='index.html'" class="btn">Início</button>
+    <button onclick="window.location.href='rms.html'" class="btn">RMs</button>
+    <button onclick="window.location.href='oficios.html'" class="btn">Ofícios</button>
+    <button onclick="window.location.href='atas.html'" class="btn">Atas</button>
+  </div>
+</nav>
+
+
+  <script src="js/script.js"></script>
+</body>
+</html>

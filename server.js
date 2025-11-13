@@ -1,34 +1,33 @@
 import express from "express";
 import cors from "cors";
-import pkg from "pg";
 import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
+import { pool } from "./db.js";           // usa o pool do db.js
+import rmsRoutes from "./rms/rmsRoutes.js"; // rotas de RMs
 
 dotenv.config();
-const { Pool } = pkg;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const app = express();
 
+const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
-});
-
+// Cria tabela de alunos se não existir
 pool.query(`
   CREATE TABLE IF NOT EXISTS alunos (
     id SERIAL PRIMARY KEY,
     nome TEXT NOT NULL,
     rm TEXT NOT NULL UNIQUE
   )
-`).catch(err => console.error("Erro ao criar tabela:", err));
+`).catch(err => console.error("Erro ao criar tabela de alunos:", err));
 
-// ➕ Criar aluno
+// === ROTAS DE ALUNOS ===
+
+// Criar aluno
 app.post("/alunos", async (req, res) => {
   const { nome, rm } = req.body;
   try {
@@ -42,7 +41,7 @@ app.post("/alunos", async (req, res) => {
   }
 });
 
-// 📋 Listar alunos
+// Listar alunos
 app.get("/alunos", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM alunos ORDER BY nome ASC");
@@ -52,7 +51,7 @@ app.get("/alunos", async (req, res) => {
   }
 });
 
-// ✏️ Atualizar
+// Atualizar aluno
 app.put("/alunos/:id", async (req, res) => {
   const { id } = req.params;
   const { nome, rm } = req.body;
@@ -67,7 +66,7 @@ app.put("/alunos/:id", async (req, res) => {
   }
 });
 
-// ❌ Excluir
+// Excluir aluno
 app.delete("/alunos/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -78,4 +77,8 @@ app.delete("/alunos/:id", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("🚀 Servidor rodando na porta 3000"));
+// === ROTAS DE RMs ===
+app.use("/rms", rmsRoutes);
+
+// Inicia o servidor
+app.listen(3000, () => console.log("Servidor rodando na porta 3000"));

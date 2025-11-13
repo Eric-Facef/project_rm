@@ -3,40 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sistema de Alunos</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Sistema Central</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Sistema de Alunos</h1>
+  <!-- ===== NAVBAR GLOBAL ===== -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <h1>Sistema Central</h1>
+    </div>
+    <div class="nav-right">
+      <button onclick="window.location.href='alunos.html'" class="btn">Alunos</button>
+      <button onclick="window.location.href='rms.html'" class="btn">RMs</button>
+      <button onclick="window.location.href='oficios.html'" class="btn">Ofícios</button>
+      <button onclick="window.location.href='atas.html'" class="btn">Atas</button>
+    </div>
+  </nav>
 
-    <div class="controls">
-      <!-- Somente botão de adicionar (abre modal) -->
-      <button id="adicionarBtn" class="btn primary">Adicionar</button>
-      <button id="listarBtn" class="btn neutral">Listar</button>
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main>
+    <div class="container">
+      <h2>Bem-vindo ao Sistema Central</h2>
+      <p>Escolha uma das opções acima para acessar o módulo desejado.</p>
 
-      <div class="search">
-        <input id="pesquisaInput" type="text" placeholder="Buscar por nome ou RM..." />
-        <button id="pesquisarBtn" class="btn primary">Pesquisar</button>
+      <div class="actions">
+        <button onclick="window.location.href='alunos.html'" class="btn primary">Abrir Sistema de Alunos</button>
+        <button onclick="window.location.href='rms.html'" class="btn">Abrir Controle de RMs</button>
       </div>
     </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>RM</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="tabelaCorpo"></tbody>
-    </table>
-  </div>
-
-  <!-- Modal -->
-  <div id="modal" class="hidden fixed inset-0 bg-overlay items-center justify-center">
-    <!-- conteúdo injetado pelo JS -->
-  </div>
+  </main>
 
   <script src="script.js"></script>
 </body>

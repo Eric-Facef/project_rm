@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controle de RMs</title>
+  <link rel="stylesheet" href="css/rms.css" />
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <h1>Controle de RMs</h1>
+    </div>
+    <div class="nav-right">
+      <button id="voltarBtn" class="btn">Início</button>
+      <button id="reverterBtn" class="btn">Voltar último RM</button>
+      <button id="adicionarBtn" class="btn primary">Adicionar</button>
+    </div>
+  </nav>
+
+  <!-- ===== GRID ===== -->
+  <main>
+    <div id="rmsGrid"></div>
+  </main>
+
+  <!-- ===== MODAL GLOBAL ===== -->
+  <div id="orderModal" class="hidden">
+    <div class="modal-box">
+      <h3 id="orderModalTitle">Ação</h3>
+      <p id="orderModalText"></p>
+      <div class="modal-buttons">
+        <button id="orderModalClose">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/rms.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS rms (
+  id SERIAL PRIMARY KEY,
+  numero VARCHAR(10) UNIQUE NOT NULL,
+  status VARCHAR(20) DEFAULT 'disponivel',
+  data_usado TIMESTAMP
+);
