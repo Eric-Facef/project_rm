@@ -80,5 +80,10 @@ app.delete("/alunos/:id", async (req, res) => {
 // === ROTAS DE RMs ===
 app.use("/rms", rmsRoutes);
 
-// Inicia o servidor
-app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
+// === INICIA O SERVIDOR ===
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`URL do serviço: ${process.env.RENDER_EXTERNAL_URL || "localhost:" + PORT}`);
+});
