@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sistema de Alunos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Sistema de Alunos</h1>
+
+    <div class="controls">
+      <!-- Somente botão de adicionar (abre modal) -->
+      <button id="adicionarBtn" class="btn primary">Adicionar</button>
+      <button id="listarBtn" class="btn neutral">Listar</button>
+
+      <div class="search">
+        <input id="pesquisaInput" type="text" placeholder="Buscar por nome ou RM..." />
+        <button id="pesquisarBtn" class="btn primary">Pesquisar</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>RM</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaCorpo"></tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="hidden fixed inset-0 bg-overlay items-center justify-center">
+    <!-- conteúdo injetado pelo JS -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
